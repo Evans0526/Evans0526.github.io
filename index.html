@@ -1,0 +1,319 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body><title>Steven Evans</title>
+<meta name="description" content="Steven Evans, manufacturing technology specialist. CNC programming, nesting automation and shop-floor software.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@600;700&display=swap">
+<style>
+/* Layout: one narrow column, read like a clean spec sheet. Mono labels act as drawing callouts; a title block closes the page. */
+:root {
+  --bg: #f7f8fa;
+  --surface: #ffffff;
+  --fg: #1b2330;
+  --muted: #5a6575;
+  --line: #d9dee6;
+  --accent: #2c5d8f;
+  --accent-soft: #e6eef6;
+  --font-display: "IBM Plex Sans Condensed", "Arial Narrow", Arial, sans-serif;
+  --font-body: "IBM Plex Sans", -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+  --nav-h: 56px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #12161c; --surface: #191f27; --fg: #e4e8ee; --muted: #9aa5b4;
+    --line: #2b333e; --accent: #7fb0e0; --accent-soft: #1d2a38; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #12161c; --surface: #191f27; --fg: #e4e8ee; --muted: #9aa5b4;
+  --line: #2b333e; --accent: #7fb0e0; --accent-soft: #1d2a38; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + 16px); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font: 400 1.0625rem/1.65 var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.wrap { max-width: 760px; margin: 0 auto; padding-inline: 20px; }
+
+/* Nav */
+.nav {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.nav .wrap { height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.brand { font: 700 1.05rem/1 var(--font-display); letter-spacing: .02em; color: var(--fg); text-decoration: none; white-space: nowrap; }
+.nav ul { display: flex; gap: 20px; list-style: none; margin: 0; padding: 0; overflow-x: auto; scrollbar-width: none; }
+.nav ul::-webkit-scrollbar { display: none; }
+.nav a.link { font: 500 .8125rem/1 var(--font-mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); text-decoration: none; white-space: nowrap; }
+.nav a.link:hover { color: var(--accent); }
+@media (max-width: 560px) {
+  .brand { display: none; }
+  .nav .wrap { justify-content: center; }
+  .nav ul { gap: 16px; }
+}
+
+/* Sections */
+section { padding-block: 72px; border-bottom: 1px solid var(--line); }
+section:last-of-type { border-bottom: 0; }
+.label {
+  display: flex; align-items: center; gap: 10px;
+  font: 500 .75rem/1 var(--font-mono); text-transform: uppercase; letter-spacing: .12em; color: var(--accent);
+  margin: 0 0 20px;
+}
+.label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+h1, h2, h3 { text-wrap: balance; margin: 0; }
+h2 { font: 700 1.75rem/1.2 var(--font-display); letter-spacing: -.005em; margin-bottom: 16px; }
+h3 { font: 600 1.125rem/1.35 var(--font-body); }
+p { margin: 0; max-width: 65ch; }
+.stack { display: flex; flex-direction: column; gap: 16px; }
+.ph { background: var(--accent-soft); border-radius: 3px; padding: 0 3px; }
+
+/* Home */
+#home { padding-block: 96px 80px; }
+.kicker { font: 500 .8125rem/1 var(--font-mono); text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin-bottom: 18px; }
+h1 { font: 700 clamp(2.75rem, 9vw, 4.5rem)/1 var(--font-display); letter-spacing: -.015em; }
+.role { font: 400 clamp(1.15rem, 3vw, 1.4rem)/1.4 var(--font-body); color: var(--muted); margin-top: 16px; }
+.lede { margin-top: 24px; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px; border-radius: 4px;
+  font: 500 .9375rem/1 var(--font-body); text-decoration: none; border: 1px solid var(--accent);
+}
+.btn.primary { background: var(--accent); color: var(--bg); }
+.btn.ghost { color: var(--accent); }
+.btn:hover { filter: brightness(1.08); }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 40px; padding: 0; list-style: none; }
+.tags li { font: 400 .8125rem/1 var(--font-mono); color: var(--muted); border: 1px solid var(--line); border-radius: 3px; padding: 7px 10px; }
+
+/* Experience */
+.timeline { display: flex; flex-direction: column; gap: 32px; margin-top: 8px; }
+.job { display: grid; grid-template-columns: 140px 1fr; gap: 8px 24px; }
+.job .when { font: 400 .875rem/1.65 var(--font-mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.job .body { min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.job .org { color: var(--muted); font-size: .9375rem; }
+.job ul { margin: 6px 0 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; }
+@media (max-width: 560px) { .job { grid-template-columns: 1fr; } }
+
+/* Projects */
+.projects { display: flex; flex-direction: column; gap: 20px; margin-top: 8px; }
+.project { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 24px; display: flex; flex-direction: column; gap: 12px; }
+.project .head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; }
+.project .id { font: 400 .75rem/1 var(--font-mono); color: var(--muted); letter-spacing: .06em; }
+.project ul.points { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; }
+.stack-tags { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 4px 0 0; padding: 0; }
+.stack-tags li { font: 400 .75rem/1 var(--font-mono); background: var(--accent-soft); color: var(--accent); border-radius: 3px; padding: 6px 8px; }
+.note { font-size: .875rem; color: var(--muted); margin-top: 4px; }
+
+/* Contact */
+.contact-list { display: grid; grid-template-columns: max-content 1fr; gap: 12px 24px; margin: 24px 0 0; }
+.contact-list dt { font: 500 .75rem/1.9 var(--font-mono); text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
+.contact-list dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+@media (max-width: 420px) { .contact-list { grid-template-columns: 1fr; gap: 2px; } .contact-list dd { margin-bottom: 12px; } }
+
+/* Title block footer, like the corner of a shop drawing */
+footer { padding-block: 40px 56px; }
+.titleblock {
+  display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); border-radius: 2px;
+  font: 400 .75rem/1.3 var(--font-mono); color: var(--muted);
+}
+.titleblock div { padding: 10px 12px; border-right: 1px solid var(--line); min-width: 0; }
+.titleblock div:last-child { border-right: 0; }
+.titleblock span { display: block; font-size: .625rem; letter-spacing: .12em; text-transform: uppercase; opacity: .8; margin-bottom: 4px; }
+.titleblock b { font-weight: 500; color: var(--fg); }
+@media (max-width: 560px) {
+  .titleblock { grid-template-columns: 1fr 1fr; }
+  .titleblock div:nth-child(2) { border-right: 0; }
+  .titleblock div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+}
+</style>
+
+<nav class="nav" aria-label="Sections">
+  <div class="wrap">
+    <a class="brand" href="#home">Steven Evans</a>
+    <ul>
+      <li><a class="link" href="#about">About</a></li>
+      <li><a class="link" href="#experience">Experience</a></li>
+      <li><a class="link" href="#projects">Projects</a></li>
+      <li><a class="link" href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <section id="home">
+    <div class="wrap">
+      <div class="kicker">Massillon, Ohio</div>
+      <h1>Steven Evans</h1>
+      <p class="role">Manufacturing Technology Specialist</p>
+      <p class="lede">I program and run the equipment that cuts steel grating, and I write the software that makes that work faster. I started on the line, moved to the burn table, and now work as a Manufacturing Technology Specialist while finishing a degree in computer science and engineering.</p>
+      <div class="actions">
+        <a class="btn primary" href="#projects">See my projects</a>
+        <a class="btn ghost" href="#contact">Get in touch</a>
+      </div>
+      <ul class="tags" aria-label="Focus areas">
+        <li>CNC programming</li>
+        <li>Burn table operation</li>
+        <li>Python</li>
+        <li>HTML/CSS/JS</li>
+        <li>SolidWorks &amp; AutoCAD</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="label">About</div>
+      <h2>Bridging the shop floor and software</h2>
+      <div class="stack">
+        <p>I work where programming and production meet. My days go to turning customer drawings and piece lists into machine-ready programs, and to finding the repetitive steps in that process that a small tool can take over.</p>
+        <p>I came to software through manufacturing, so the tools I build fit how a shop actually runs: quick to learn, built around the files people already use, and aimed at fewer mistakes and less scrap.</p>
+        <p>I'm studying computer science and engineering at Stark State College, with an artificial intelligence certificate alongside it. I'm looking for roles in technology and manufacturing where I can keep doing both.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <div class="label">Experience</div>
+      <h2>Where I've worked</h2>
+      <div class="timeline">
+        <article class="job">
+          <div class="when">Nov. 2022 – Present</div>
+          <div class="body">
+            <h3>Manufacturing Technology Specialist, Programming</h3>
+            <div class="org">Ohio Gratings, Inc. · Sep. 2025 – Present</div>
+            <ul>
+              <li>Program jobs for the shop's cutting equipment from customer drawings and piece lists.</li>
+              <li>Build internal tools that automate panel nesting, job setup and request tracking for the programming team.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="job">
+          <div class="when">May 2023 – Sep. 2025</div>
+          <div class="body"><h3>Burn Table Operator I</h3><div class="org">Ohio Gratings, Inc.</div></div>
+        </article>
+        <article class="job">
+          <div class="when">Feb. 2023 – May 2023</div>
+          <div class="body"><h3>Assistant Burn Table Operator</h3><div class="org">Ohio Gratings, Inc.</div></div>
+        </article>
+        <article class="job">
+          <div class="when">Nov. 2022 – Feb. 2023</div>
+          <div class="body"><h3>Line Operator</h3><div class="org">Ohio Gratings, Inc.</div></div>
+        </article>
+      </div>
+
+      <h2 style="margin-top:56px">Education &amp; certifications</h2>
+      <div class="timeline">
+        <article class="job">
+          <div class="when">Jan. 2025 – Present</div>
+          <div class="body"><h3>Associate Degree, Computer Science and Engineering</h3><div class="org">Stark State College</div></div>
+        </article>
+        <article class="job">
+          <div class="when">Jan. 2025 – Present</div>
+          <div class="body"><h3>Certification, Artificial Intelligence</h3><div class="org">Stark State College</div></div>
+        </article>
+        <article class="job">
+          <div class="when">May 2023</div>
+          <div class="body"><h3>High School Diploma</h3><div class="org">Manchester High School</div></div>
+        </article>
+        <article class="job">
+          <div class="when">May 2023</div>
+          <div class="body"><h3>Certificate, Engineering, Robotics &amp; Manufacturing Academy</h3><div class="org">Portage Lakes Career Center</div></div>
+        </article>
+        <article class="job">
+          <div class="when">Certifications</div>
+          <div class="body">
+            <ul style="margin-top:0">
+              <li>AutoCAD User</li>
+              <li>Fanuc Handling Tool Operation &amp; Programming (J2P0310, IACT approved)</li>
+              <li>OSHA 10-hour General Industry</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="label">Projects</div>
+      <h2>Tools I've built</h2>
+      <div class="projects">
+        <article class="project">
+          <div class="head">
+            <h3>Panel Out Automation</h3>
+            <span class="id">DESKTOP APP</span>
+          </div>
+          <p>A desktop tool that turns a job's saw piece list into a finished panel layout. It reads the piece-list workbook, groups parts by bearing-bar spacing and gauge, and nests them onto standard 2&prime; and 3&prime; wide stock panels in 20&prime; and 24&prime; lengths to get the best yield.</p>
+          <ul class="points">
+            <li>Calculates real panel widths from bar count, spacing and gauge</li>
+            <li>Exports printable shear layout PDFs and CSVs for the floor</li>
+            <li>Includes a custom mode for one-off panel sizes</li>
+          </ul>
+          <ul class="stack-tags"><li>Python</li><li>Tkinter</li><li>openpyxl</li><li>ReportLab</li></ul>
+        </article>
+
+        <article class="project">
+          <div class="head">
+            <h3>Programming Tools Suite</h3>
+            <span class="id">DESKTOP APP</span>
+          </div>
+          <p>An all-in-one desktop app for a CNC programming team. It brings the tools the team reaches for every day into one window, each one built for that team's workflow.</p>
+          <ul class="points">
+            <li>Laser time calculator for quoting and scheduling</li>
+            <li>SigmaNEST part verifier, job setup and PDF merging tools</li>
+            <li>Searchable library of machine parameters, alloy codes and gauge charts</li>
+            <li>Rebuilt from Electron to Python and pywebview, shrinking the app from about 180&nbsp;MB to tens of MB</li>
+          </ul>
+          <ul class="stack-tags"><li>Python</li><li>pywebview</li><li>JavaScript</li><li>HTML/CSS</li><li>PyInstaller</li></ul>
+        </article>
+
+        <article class="project">
+          <div class="head">
+            <h3>Programming Task Tracker</h3>
+            <span class="id">INTERNAL TOOL</span>
+          </div>
+          <p>A request and assignment tracker built into the tools suite. Engineers log programming requests by machine, material and issue, and the team assigns, details and closes them in one shared list.</p>
+          <ul class="stack-tags"><li>JavaScript</li><li>Python</li><li>Microsoft Access</li></ul>
+        </article>
+      </div>
+      <p class="note">These were built for internal use, so the source code is private. I'm happy to walk through them in a conversation.</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="label">Contact</div>
+      <h2>Let's talk</h2>
+      <p>I'm open to conversations about manufacturing technology, programming and shop automation.</p>
+      <dl class="contact-list">
+        <dt>Email</dt><dd>stevenevans0526@gmail.com</dd>
+        <dt>GitHub</dt><dd><a href="https://github.com/Evans0526" target="_blank" rel="noopener">github.com/Evans0526</a></dd>
+        <dt>Location</dt><dd>Massillon, Ohio</dd>
+      </dl>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="titleblock" aria-label="Page details">
+      <div><span>Drawn by</span><b>S. Evans</b></div>
+      <div><span>Title</span><b>Portfolio</b></div>
+      <div><span>Scale</span><b>1:1</b></div>
+      <div><span>Rev</span><b>A · <span id="yr" style="display:inline;font-size:inherit;letter-spacing:0;text-transform:none;opacity:1;margin:0">2026</span></b></div>
+    </div>
+  </div>
+</footer>
+<script>document.getElementById("yr").textContent = new Date().getFullYear();</script>
+</body></html>
